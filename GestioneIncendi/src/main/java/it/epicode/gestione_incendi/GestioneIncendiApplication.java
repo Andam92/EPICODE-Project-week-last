@@ -14,6 +14,7 @@ public class GestioneIncendiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GestioneIncendiApplication.class, args);
 		
+		//FACTORY
 		//Uso una factory per creare le sonde 
 		SondeFactory factory = new SondeFactory();
 		Sonda sonda1 = (Sonda) factory.creaDispositivo("sonda");
@@ -24,17 +25,20 @@ public class GestioneIncendiApplication {
 		//ConcreteObserver controllo1 = (ConcreteObserver) factory.creaDispositivo("observer");
 		
 		
-		//controllo1.setSonda(sonda1);
-		
+		//Costruttore di ConcreteObserver (controllo sonde) con sonda
 		ConcreteObserver controllo1 = new ConcreteObserver(sonda1);
-		System.out.println(sonda1.getObservers().size());
+		//System.out.println(sonda1.getObservers().size());
 		
-		
-		
-		//Centro di controllo
-		
+
+		//Centro di controllo con controllo sonde		
 		CentroControllo centro = new CentroControllo(controllo1);
-		sonda1.setLivelloFumo(4);
+		
+		
+		//OBSERVER
+		//Check nessun allarme
+		sonda1.setLivelloFumo(3);
+		//Check allarme livello di fumo
+		//sonda1.setLivelloFumo(6);
 		
 	}
 

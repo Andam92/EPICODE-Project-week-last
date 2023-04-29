@@ -23,6 +23,7 @@ public class SondeFactory {
 		}
 		if(tipo.equalsIgnoreCase("sonda")) {
 			Sonda sonda = new Sonda();
+			sonda.setId(faker.number().numberBetween(1, 999));
 			sonda.setLatitudine(faker.address().latitude());
 			sonda.setLongitudine(faker.address().longitude());			
 			return sonda;

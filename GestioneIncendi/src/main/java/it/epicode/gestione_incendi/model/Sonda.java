@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 // Sonda è il Subject
 public class Sonda implements Observer {
 	
+	private int id;
 	private String latitudine;	
 	private String longitudine;	
 	private Integer livelloFumo = 0;
@@ -36,7 +37,9 @@ public class Sonda implements Observer {
 		 if(this.getLivelloFumo() > 5) {			 
 			 this.getObservers().forEach(observer -> observer.inviaAllarme());	
 				 		 
-			} 
+			} else {
+				System.out.println("Nessun problema rilevato. Livello di fumo pari a " + this.getLivelloFumo() );
+			}
 		 
 	 }
 	

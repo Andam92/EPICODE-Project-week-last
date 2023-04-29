@@ -20,14 +20,9 @@ public class CentroControllo implements ControlloProxy{
 	public void allertaPersonale() {
 		
 		if(controlloSonde.isAllerta()) {
-			System.err.println("Allarme! Il livello di fumo riportato dalla sonda LAT [" + controlloSonde.getSonda().getLatitudine() + "]"
-		+ ", LONG [" + controlloSonde.getSonda().getLongitudine() + "] è superiore a 5!");
-		}
-		
+			System.err.println("http://host/alarm?=idsonda=" + controlloSonde.getSonda().getId() + "&lat=" + controlloSonde.getSonda().getLatitudine()  
+		+ "&lon=" + controlloSonde.getSonda().getLongitudine() + "&smokelevel=" + controlloSonde.getSonda().getLivelloFumo());
+		} 		
 	}
-
 }
 
-
-//System.out.println("Allarme! Il livello di fumo riportato dalla sonda LAT [" + sonda.getLatitudine() + "]"
-//		+ ", LONG [" + sonda.getLongitudine() + "] è superiore a 5!");

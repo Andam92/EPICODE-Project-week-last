@@ -35,11 +35,8 @@ public class ConcreteObserver implements Observer {
 		System.out.println(this.allerta);
 		for(ControlloProxy proxy : proxyObservers) {
 			 if(this.isAllerta()) {			
-				 System.out.println("allerta");
 				 proxy.allertaPersonale();
-			 } else if(!this.allerta){
-				 System.out.println("Nessun problema");
-			 }
+			 } 
 		 }
 		
 	}
