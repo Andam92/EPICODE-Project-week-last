@@ -4,24 +4,32 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import it.epicode.gestione_incendi.model.Allarme;
-import it.epicode.gestione_incendi.model.GestoreSonde;
+import com.github.javafaker.Faker;
+
+import it.epicode.gestione_incendi.model.ConcreteObserver;
+import it.epicode.gestione_incendi.model.Observer;
 import it.epicode.gestione_incendi.model.Sonda;
 
 @Configuration
 public class SondeFactory {
 	
+	public Faker faker = new Faker();
+	
 	@Bean
 	@Scope("prototype")
-	public Allarme creaDispositivo(String tipo) {
+	public Observer creaDispositivo(String tipo) {
 		if(tipo == null) {
 			return null;
 		}
-		if(tipo.equalsIgnoreCase("Sonda")) {
-			return new Sonda();
+		if(tipo.equalsIgnoreCase("sonda")) {
+			Sonda sonda = new Sonda();
+			sonda.setLatitudine(faker.address().latitude());
+			sonda.setLongitudine(faker.address().longitude());			
+			return sonda;
 			
-		}else if(tipo.equalsIgnoreCase("GestoreSonde")){
-			return new GestoreSonde();
+		}else if(tipo.equalsIgnoreCase("observer")){
+			ConcreteObserver controllo = new ConcreteObserver();
+			return controllo;
 		}
 		return null;
 	}
